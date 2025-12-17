@@ -1,0 +1,187 @@
+
+.footer {
+    background-color: #222; /* Dark background */
+    color: #eee; /* Light text */
+    padding: 50px 20px;
+    font-family: Arial, sans-serif;
+    border-top: 5px solid #007bff; /* A blue line at the top to match a potential brand color */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Space between columns */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 200px; /* Minimum width before wrapping */
+    margin-bottom: 20px; /* Space between rows on smaller screens */
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #007bff; /* Blue headings */
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(0, 123, 255, 0.3); /* Subtle underline */
+    padding-bottom: 10px;
+}
+
+.footer-brand .footer-tagline {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: -10px; /* Bring it closer to the brand name */
+}
+
+.footer-brand .footer-copyright {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-top: 25px;
+}
+
+.footer-links ul,
+.footer-services ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li,
+.footer-services li {
+    margin-bottom: 10px;
+}
+
+.u a{
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+.u a::after{
+    content: '';
+    position:absolute;
+    width:100%;
+    height:2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: 0.3s ease-in;
+    transform: scaleX(0);
+    
+}
+
+.u a:hover{
+    color:#007bff;
+}
+
+.u a:hover::after{
+    
+    transform: scaleX(1);
+}
+
+.u1 a{
+    color: white;
+    text-decoration: none;
+    position: relative;
+}
+
+
+.u1 a::after{
+    content: '';
+    position:absolute;
+    width:100%;
+    height:2px;
+    bottom: -5px;
+    left: 0;
+    background-color: white;
+    transition: 0.3s ease-in;
+    transform: scaleX(0);
+    
+}
+
+.u1 a:hover{
+    color:#007bff;
+}
+
+.u1 a:hover::after{
+    transform: scaleX(1);
+}
+/* .footer-links a,
+.footer-services a {
+    color: #eee;
+    text-decoration:none; 
+    
+    
+   
+    
+    
+}
+
+  
+
+
+
+.footer-links a:hover,
+.footer-services a:hover {
+    color: #007bff; /* Blue on hover */        /* start invisible */  /* grow from left */
+ 
+     */
+
+    
+    
+
+
+.footer-contact p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.footer-contact i { /* For font-awesome icons if you use them, otherwise remove */
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #eee;
+    font-size: 24px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Blue on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center; /* Center items when stacked */
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: unset; /* Remove min-width for better stacking */
+        width: 100%; /* Take full width */
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center; /* Center social icons */
+    }
+}
