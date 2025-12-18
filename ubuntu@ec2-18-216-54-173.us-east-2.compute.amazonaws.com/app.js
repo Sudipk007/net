@@ -2,26 +2,13 @@ const express = require('express')
 const app = express();
 const connectDb = require('./db')
 const cors = require('cors');
-
-const path =require('path')
-const _dirname= path.dirname('')
-
 const { json } = require('body-parser');
 const {GoogleGenAI} =require('@google/genai')
-const buildpath = path.join(_dirname , '../Frontend/Frontend/dist')
 app.use(cors())
 app.use(express.json())
-app.use(express.static(buildpath))
 app.get('/',(req,res)=>{
-    res.sendFile(
-        path.join(__dirname, "../Frontend/Frontend/dist/index.html"),
-        function(err){
-            if(err){
-                res.status(500).send('error')
-            }
-        }
-    );
-});
+    res.send('Hello')
+})
 
 app.post('/create',connectDb)
 

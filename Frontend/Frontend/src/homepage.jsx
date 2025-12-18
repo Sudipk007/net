@@ -17,7 +17,7 @@ function Home(){
     async function run(){
        const inp = document.getElementById('inp')
        const inp1 = document.getElementById('inp1')
-       const send = await axios.post('http://localhost:3000/create',{username:inp.value,password:inp1.value})
+       const send = await axios.post('http://3.137.207.118:3000/create',{username:inp.value,password:inp1.value})
 
     }
     return(

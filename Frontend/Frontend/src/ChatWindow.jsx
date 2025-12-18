@@ -43,7 +43,7 @@ const ChatWindow = ({ onClose }) => {
         
         try{
         
-          const send = await axios.post('http://localhost:3000/api/chatbot',{message:inp.value})
+          const send = await axios.post('http://3.137.207.118:3000/api/chatbot',{message:inp.value})
             const {data} = send.data;      
             const aiMessage = { sender: 'ai', text: data };
             setMessages((prevMessages) => [...prevMessages, aiMessage]);
