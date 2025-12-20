@@ -18,9 +18,9 @@ jobs:
         with:
           host: ${{ secrets.ec2_host }}
           username: ${{ secrets.ec2_user }}
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.ec2_key}}
           script: |
-            cd ${{ secrets.APP_PATH }}
+            cd ${{ secrets.app_path }}
             
             # Pull latest code
             git pull origin main
