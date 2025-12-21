@@ -13,7 +13,7 @@ function Home() {
     <>
       <div className="homepage-container">
         <header className="hero-section">
-          <h1>Welcome to NetNova IT Solution</h1>
+          <h1>Welcome to NetNova Tech Solution</h1>
           <p>Your gateway to cutting-edge digital solutions and unparalleled innovation.</p>
           <button className="learn-more-button">Learn More</button>
         </header>
