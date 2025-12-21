@@ -28,9 +28,9 @@ jobs:
             # Backend deployment
             cd ~/net/Backend
             npm install
-            pm2 restart Backend || pm2 start app.js --name backend
+            pm2 restart app.js || pm2 start app.js 
             
             # Frontend deployment (React)
-            cd ~/nt/Frontend/Frontend/
+            cd ~/net/Frontend/Frontend/
             npm install
             npm run build
