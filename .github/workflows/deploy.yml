@@ -26,11 +26,11 @@ jobs:
             git pull origin main
             
             # Backend deployment
-            cd Backend
+            cd ~/net/Backend
             npm install
             pm2 restart Backend || pm2 start app.js --name backend
             
             # Frontend deployment (React)
-            cd Frontend/Frontend/
+            cd ~/nt/Frontend/Frontend/
             npm install
             npm run build
