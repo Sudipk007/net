@@ -24,7 +24,8 @@ const Product= () => {
 
       <main>
         <h2 className="section-title">Best Sellers</h2>
-        <div className="products-grid">
+        
+        {/* <div className="products-grid">
           {headphone.map((item) => (
             <ProductCard 
               key={item.id} 
@@ -32,7 +33,16 @@ const Product= () => {
               onAddToCart={handleAddToCart} 
             />
           ))}
-        </div>
+        </div> */}
+        {/* <div className="products-grid">
+          {headphone.map((item) => (
+            <ProductCard 
+              key={item.id} 
+              product={item} 
+              onAddToCart={handleAddToCart} 
+            />
+          ))}
+        </div> */}
       </main>
     </div>
   );

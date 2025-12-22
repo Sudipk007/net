@@ -180,10 +180,7 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
         </button>
 
         <div className="signup-note">
-          Don't have an account? <a href='/Signup' onClick={()=>{
-            return <Navigate to='/Signup'/>
-
-          }}>Sign up</a>
+          Don't have an account? <a href='/Signup'>Sign up</a>
         </div>
       </form>
     </div>

@@ -4,13 +4,32 @@ import { useState } from 'react';
 const ProductCard = ({ product, onAddToCart }) => {
   const [color,setColor]= useState()
   let col;
+  
   const play = (e)=>{
-    col=e.target.className;
+    let list =document.querySelectorAll('.pcolor')
+    console.log(list[0].childElementCount)
+    col =(e.target.className)
     
-    if(product.image.length>1){
+    
+    if(product.image.length>=1){
       
-      if(col==='red'){
+      if(col===product.color[0]){
+        e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[0]
+      }
+      if(col===product.color[1]){
         e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[1]
+      }
+
+      if(col===product.color[2]){
+        e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[2]
+      }
+
+      if(col===product.color[3]){
+        e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[3]
+      }
+
+      if(col===product.color[4]){
+        e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[4]
       }
       
 
@@ -25,7 +44,7 @@ const ProductCard = ({ product, onAddToCart }) => {
     <div className="product-card">
       <div className="image-container">
        
-        <img src={product.image} alt={product.title} />
+        <img src={product.image[0]} alt={product.title} />
       </div>
       <div className="product-info">
         <span className="category">{product.category}</span>
@@ -33,10 +52,11 @@ const ProductCard = ({ product, onAddToCart }) => {
         <p className="description">{product.description}</p>
         
         <div className='pcolor'>
-        {product.color.map((a)=>{
-          return(
+        {product.color.map((cl)=>{
           
-            <span className={a} onClick={play}></span>
+          return(
+            
+          <span className={cl} onClick={play}></span>
           )
         })}
         </div>
