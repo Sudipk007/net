@@ -14,6 +14,11 @@
   cursor: pointer;
 }
 
+.cart-icon a{
+  text-decoration: none;
+  color:black;
+}
+
 /* Main Layout */
 .app-container {
   max-width: 1000px;
@@ -224,4 +229,31 @@
   border-radius: 50%;
  background-color: pink;
  margin-right: 5px;
+}
+
+.lap{
+  width: 100px;
+  height: 100px;
+}
+.self{
+  display: flex;
+  gap: 80px; /* space between each span */
+  justify-content: center; /* optional: center all spans horizontally */
+  flex-wrap: wrap; 
+  position: relative;
+  margin-top: 100px;
+}
+.self span{
+  display: flex;
+  flex-direction: column; /* icon on top, text below */
+  align-items: center;    /* horizontal center */
+  justify-content: center; /* vertical center */
+  text-align: center;      /* center text if multiline */
+  gap: 5px;               /* optional spacing between icon and text */
+  height: 100px;          /* optional height for container */
+  width: 100px; 
+}
+
+.self span:hover{
+  cursor: pointer;
 }

@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import './ProductPage.css';
+import { Link } from "react-router-dom";
 import {headphone} from './product'
 import ProductCard from './prodet';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
+import { faLaptop,faHeadphones,faCamera,faServer} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from 'react-router-dom';
+
+
+
+
 
 const Product= () => {
 
@@ -12,6 +21,11 @@ const Product= () => {
     setCartCount(prev => prev + 1);
     
   };
+  const navigate = useNavigate();
+  const handle=(path)=>{
+    navigate(path);
+
+  }
 
   return (
     <div className="app-container">
@@ -24,6 +38,33 @@ const Product= () => {
 
       <main>
         <h2 className="section-title">Best Sellers</h2>
+        <div className='self'>
+           
+              <span > 
+                <FontAwesomeIcon icon={faLaptop} className='lap' onClick={()=>{handle("/shop/buy-computer")}} />
+                <p>Computer and Laptops</p>
+              </span>
+            
+          
+          <span>
+            <FontAwesomeIcon icon={faHeadphones} className='lap'/>
+            <p>Headphones</p>
+          </span>
+          <span>
+            <FontAwesomeIcon icon={faCamera} className='lap'/>
+            <p>Cameras</p>
+          </span>
+          <span>
+            <FontAwesomeIcon icon={faServer} className='lap'/> 
+            <p>Networking Devices</p>
+          </span>
+
+          
+          
+
+        </div>
+        
+
         
         {/* <div className="products-grid">
           {headphone.map((item) => (

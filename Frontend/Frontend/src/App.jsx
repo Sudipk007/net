@@ -11,6 +11,7 @@ import ChatIcon from './ChatIcon';
 import ChatWindow from './ChatWindow';
 import Login from './Login';
 import Signup from './Signup';
+import Productcat from './computer'
 function App() {
   
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/shop/buy-computer" element={<Productcat/>} />
             <Route path="/Signup" element={<Signup />} />
           </Routes>
         </div>
