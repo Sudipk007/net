@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "./Login.css";
 import { Link, redirect } from "react-router-dom";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 /**
  * Login component
  *
@@ -26,6 +26,12 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
     setErrors({});
     setServerError("");
   };
+  const navigate =useNavigate();
+
+  const handleNav=(path)=>{
+    navigate(path)
+
+  }
 
   const validate = () => {
     const e = {};
@@ -180,7 +186,7 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
         </button>
 
         <div className="signup-note">
-          Don't have an account? <a href='/Signup'> Sign up</a>
+          Don't have an account?  <a onClick={()=>{handleNav('/Signup')}}>Sign up</a>
         </div>
       </form>
     </div>
