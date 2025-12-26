@@ -24,6 +24,8 @@ jobs:
             
             # Pull latest code
             git pull origin main
+            git pull --rebase origin main
+
             
             # Backend deployment
             cd ~/net/Backend
