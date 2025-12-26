@@ -43,17 +43,11 @@ function Navbar() {
             <Link to="/">Home</Link>
             </li>
             <li className="dropdown">
-           <Link to='/products' ><span   onMouseEnter={toggleDropdown}
+           <Link to='/products' ><span   onMouseEnter={toggleDropdown} onMouseLeave={toggleDropdown} 
             className="dropdown-toggle" onClick={toggleDropdown}>
                 Products <i className={`arrow ${dropdownOpen ? 'up' : 'down'}`}></i>
             </span>
-            {dropdownOpen && (
-                <div className="dropdown-menu" onMouseLeave={toggleDropdown} >
-                <Link to="/products/category1" onClick={toggleDropdown}>Category 1</Link>
-                <Link to="/products/category2" onClick={toggleDropdown}>Category 2</Link>
-                <Link to="/products/all" onClick={toggleDropdown}>View All</Link>
-                </div>
-            )}
+            
             </Link>
             </li>
             <li>

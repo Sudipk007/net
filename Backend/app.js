@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express();
-const connectDb = require('./db')
+const {createUser,connection,createClient} = require('./db')
+
 const cors = require('cors');
 
 const path =require('path')
 const _dirname= path.dirname('')
-
 const { json } = require('body-parser');
 const {GoogleGenAI} =require('@google/genai')
 const buildpath = path.join(_dirname , '../Frontend/Frontend/dist')
@@ -23,7 +23,9 @@ app.get('/',(req,res)=>{
     );
 });
 
-app.post('/create',connectDb)
+app.post('/create',createClient)
+    
+    
 
 app.post('/api/chatbot',async(req,res)=>{
     const ai =await new GoogleGenAI({apiKey:'AIzaSyDgHQPj-F7oG1ymMuHh8U5Xt9xkP0uMgDM'})
@@ -45,5 +47,5 @@ app.post('/api/chatbot',async(req,res)=>{
 
 app.listen(3000,()=>{
     console.log('Server Connected')
-    connectDb();
+    connection();
 })

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProductPage.css';
 import { Link } from "react-router-dom";
-import {headphone} from './product'
+import {headphone} from '../../../Backend/product'
 import ProductCard from './prodet';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
@@ -17,7 +17,7 @@ const Product= () => {
   const [cartCount, setCartCount] = useState(0);
 
   const handleAddToCart = (product) => {
-    console.log(`Added ${product.title} to cart`);
+    console.log(`Added ${product.color[0]} to cart`);
     setCartCount(prev => prev + 1);
     
   };
@@ -44,10 +44,10 @@ const Product= () => {
                 <FontAwesomeIcon icon={faLaptop} className='lap' onClick={()=>{handle("/shop/buy-computer")}} />
                 <p>Computer and Laptops</p>
               </span>
-            
-          
+              
+              
           <span>
-            <FontAwesomeIcon icon={faHeadphones} className='lap'/>
+            <FontAwesomeIcon icon={faHeadphones} className='lap' onClick={()=>{handle("/shop/buy-headphone")}}/>
             <p>Headphones</p>
           </span>
           <span>

@@ -11,7 +11,9 @@ import ChatIcon from './ChatIcon';
 import ChatWindow from './ChatWindow';
 import Login from './Login';
 import Signup from './Signup';
-import Productcat from './computer'
+import Productcat from './Headphone'
+import Comp from './computer'
+
 function App() {
   
 
@@ -26,7 +28,8 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/shop/buy-computer" element={<Productcat/>} />
+            <Route path="/shop/buy-computer" element={<Comp />} />
+            <Route path="/shop/buy-headphone" element={<Productcat/>} />
             <Route path="/Signup" element={<Signup />} />
           </Routes>
         </div>

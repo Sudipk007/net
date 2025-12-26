@@ -1,19 +1,29 @@
 import React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, onAddToCart }) => {
-  const [color,setColor]= useState()
-  let col;
   
+  let color;
+
+  const navigate = useNavigate();
+
+  const handlevent= (path)=>{
+    navigate(`/${path}`);
+  }
+  let col;
+
   const play = (e)=>{
-    let list =document.querySelectorAll('.pcolor')
-    console.log(list[0].childElementCount)
     col =(e.target.className)
-    
+    color=col; 
+    console.log(color)
     
     if(product.image.length>=1){
       
       if(col===product.color[0]){
+        
+    
+
         e.target.parentNode.parentNode.parentNode.firstChild.firstChild.src=product.image[0]
       }
       if(col===product.color[1]){
@@ -41,14 +51,14 @@ const ProductCard = ({ product, onAddToCart }) => {
   
   
   return (
-    <div className="product-card">
-      <div className="image-container">
+    <div className="product-card" >
+       <div className="image-container" >
        
-        <img src={product.image[0]} alt={product.title} />
+        <img src={product.image[0]} alt={product.title} /> 
       </div>
       <div className="product-info">
         <span className="category">{product.category}</span>
-        <h3>{product.title}</h3>
+        <a onClick={()=>{handlevent(product.title)}}><h3>{product.title}</h3></a>
         <p className="description">{product.description}</p>
         
         <div className='pcolor'>
@@ -66,7 +76,7 @@ const ProductCard = ({ product, onAddToCart }) => {
           <span className="price">${product.price}</span>
           <button 
             className="add-btn"
-            onClick={() => onAddToCart(product)}
+            onClick={() => onAddToCart(product,color)}
             
           >
             Add to Cart

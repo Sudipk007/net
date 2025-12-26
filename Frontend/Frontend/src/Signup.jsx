@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Login.css";
+import axios from "axios";
 
 
 /**
@@ -11,7 +12,7 @@ import "./Login.css";
  * - submitUrl: optional URL to post signup data (defaults to /api/signup)
  * - onSwitchToLogin: optional callback to switch UI back to login view
  */
-export default function Signup({ onSignup, submitUrl = "/api/signup", onSwitchToLogin }) {
+export default function Signup() {
   const [fullName, setFullName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -23,6 +24,7 @@ export default function Signup({ onSignup, submitUrl = "/api/signup", onSwitchTo
   const [serverError, setServerError] = useState("");
   const [loading, setLoading] = useState(false);
   const nameRef = useRef(null);
+
 
   const resetErrors = () => {
     setErrors({});
@@ -58,6 +60,22 @@ export default function Signup({ onSignup, submitUrl = "/api/signup", onSwitchTo
     return Object.keys(e).length === 0;
   };
 
+  const createUser= async()=>{ 
+    const em = document.getElementById('email').value;
+    const pass =document.getElementById('password').value;
+    const fn = document.getElementById('fullName').value;
+    try{
+      const create = await axios.post('http://localhost:3000/create',{fullName:fn,email:em,password:pass})
+
+    }
+    catch(err){
+      console.log(err)
+    }
+    
+
+
+  }
+
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     resetErrors();
@@ -87,7 +105,7 @@ export default function Signup({ onSignup, submitUrl = "/api/signup", onSwitchTo
           <input
             id="fullName"
             ref={nameRef}
-            className={`login-input ${errors.fullName ? "invalid" : ""}`}
+            className={`login-input ${errors.fullName ? "invalid" : ""} color:black`}
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -168,6 +186,7 @@ export default function Signup({ onSignup, submitUrl = "/api/signup", onSwitchTo
           className="login-btn"
           disabled={loading}
           aria-busy={loading}
+          onClick={createUser}
         >
           {loading ? "Creating account..." : "Create account"}
         </button>

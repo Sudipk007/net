@@ -1,19 +1,16 @@
 import './ProductPage.css';
 import ProductCard from './prodet';
 import { useState } from 'react';
-import {computer} from '../../../Backend/product'
-import CompPro from './CompPro';
+import {headphone} from '../../../Backend/product'
 
-
-const Computer= () => {
+const Productcat= () => {
     const [cartCount, setCartCount] = useState(0);
-    const handleAddToCart = (product) => {
+    const handleAddToCart = (product,color) => {
         console.log(`Added ${product.title} to cart`);
+        
         setCartCount(prev => prev + 1);
         
       };
-
-     
 
     return(
     <>
@@ -27,13 +24,13 @@ const Computer= () => {
             <main>
                 <h2 className="section-title">Best Sellers</h2>
                 <div className="products-grid">
-                    {computer.map((item)=>{
-                       return <CompPro
-                       key={item.id} 
-                       product={item} 
-                       onAddToCart={handleAddToCart} />
-                    })}
-                    
+                    {headphone.map((item) => (
+                        <ProductCard 
+                        key={item.id} 
+                        product={item} 
+                        onAddToCart={handleAddToCart} 
+                        />
+                    ))}
                 </div> 
             </main>
         
@@ -46,4 +43,4 @@ const Computer= () => {
 
 }
 
-export default Computer;
+export default Productcat;
