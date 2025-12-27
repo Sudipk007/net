@@ -28,7 +28,7 @@ app.post('/create',createClient)
     
 
 app.post('/api/chatbot',async(req,res)=>{
-    const ai =await new GoogleGenAI({})
+    const ai =await new GoogleGenAI({apiKey:process.env.APIKEY})
     const {message} =req.body;
     const response =await ai.models.generateContent({
         model: 'gemini-2.5-flash',

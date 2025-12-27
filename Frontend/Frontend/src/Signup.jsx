@@ -65,7 +65,7 @@ export default function Signup() {
     const pass =document.getElementById('password').value;
     const fn = document.getElementById('fullName').value;
     try{
-      const create = await axios.post('http://localhost:3000/create',{fullName:fn,email:em,password:pass})
+      const create = await axios.post('/create',{fullName:fn,email:em,password:pass})
 
     }
     catch(err){
