@@ -37,24 +37,34 @@ export default function Signup() {
     navigate(path)
 
   }
+  let pass = document.getElementById('password').value
 
   const validate = () => {
-    const e = {};
+    const e ={};
     if (!fullName.trim()) e.fullName = "Full name is required.";
-    if (!email) e.email = "Email is required.";
+    if (email) {
+      e.email = "Email is required."
+    }
     else {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!re.test(email)) e.email = "Enter a valid email address.";
+      if (re.test(email)) e.email = "Enter a valid email address.";
     }
 
-    if (!password) e.password = "Password is required.";
-    else if (password.length < 8)
+    if (password) {
+      e.password = "Password is required.";
+    }
+    if (password.length < 8){
       e.password = "Password must be at least 8 characters.";
 
-    if (!confirm) e.confirm = "Please confirm your password.";
-    else if (password !== confirm) e.confirm = "Passwords do not match.";
+    }
+   console.log(password)
+    
+     
 
-    if (!agree) e.agree = "You must accept the terms to continue.";
+    if (confirm){ e.confirm = "Please confirm your password.";}
+    if (password !== confirm){ e.confirm = "Passwords do not match.";}
+
+    if (!agree){ e.agree = "You must accept the terms to continue.";}
 
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -65,7 +75,7 @@ export default function Signup() {
     const pass =document.getElementById('password').value;
     const fn = document.getElementById('fullName').value;
     try{
-      const create = await axios.post('/create',{fullName:fn,email:em,password:pass})
+      const create = await axios.post('http://localhost:3000/create',{fullName:fn,email:em,password:pass})
 
     }
     catch(err){
@@ -140,6 +150,7 @@ export default function Signup() {
             <input
               id="password"
               className={`login-input ${errors.password ? "invalid" : ""}`}
+              onChange={(e) => setPassword(e.target.value)}
               type={showPassword ? "text" : "password"}
               placeholder="Choose a strong password"
               autoComplete="new-password"
