@@ -145,6 +145,18 @@
   border-color: var(--danger);
 }
 
+#log{
+  background-color: rgb(66, 66, 182);
+  color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#log:hover{
+  cursor:pointer;
+}
+
 .signup-note{
   margin-top: 14px;
   font-size: 13px;

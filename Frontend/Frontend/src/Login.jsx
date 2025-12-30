@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import "./Login.css";
 import { Link, redirect } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 /**
  * Login component
  *
@@ -62,40 +63,16 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
     setLoading(true);
     setServerError("");
 
-    try {
-      // Example fetch - adjust to your backend or replace with your auth logic.
-      const resp = await fetch(submitUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, remember }),
-      });
+    try{
 
-      if (!resp.ok) {
-        // attempt to read json error
-        let payload;
-        try {
-          payload = await resp.json();
-        } catch {
-          payload = { message: resp.statusText || "Login failed." };
-        }
-        throw new Error(payload.message || "Login failed.");
-      }
 
-      const data = await resp.json();
 
-      // Example: data is expected to contain token and maybe user info
-      if (onLogin) onLogin(data);
-
-      // optionally store token if remember me
-      if (remember && data.token) {
-        localStorage.setItem("authToken", data.token);
-      }
-
-    } catch (err) {
-      setServerError(err.message || "An unknown error occurred.");
-    } finally {
-      setLoading(false);
     }
+    catch(err){
+
+    }
+
+    
   };
 
   return (
@@ -118,7 +95,6 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
             autoComplete="email"
             aria-invalid={errors.email ? "true" : "false"}
             aria-describedby={errors.email ? "email-error" : undefined}
-            disabled={loading}
           />
         </label>
         {errors.email && (
@@ -140,7 +116,6 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
               autoComplete="current-password"
               aria-invalid={errors.password ? "true" : "false"}
               aria-describedby={errors.password ? "password-error" : undefined}
-              disabled={loading}
             />
             <button
               type="button"
@@ -148,7 +123,6 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
               onClick={() => setShowPassword((s) => !s)}
               aria-pressed={showPassword}
               aria-label={showPassword ? "Hide password" : "Show password"}
-              disabled={loading}
             >
               {showPassword ? "Hide" : "Show"}
             </button>
@@ -166,7 +140,6 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
               type="checkbox"
               checked={remember}
               onChange={(e) => setRemember(e.target.checked)}
-              disabled={loading}
             />
             Remember me
           </label>
@@ -177,9 +150,8 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
         </div>
 
         <button
+          id="log"
           type="submit"
-          className="login-btn"
-          disabled={loading}
           aria-busy={loading}
         >
           {loading ? "Signing in..." : "Sign in"}

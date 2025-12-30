@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
-const {createUser,connection,createClient} = require('./db')
+const {mongoConnect} = require('./db')
+const {createUseer} = require('./Controller/UserModel')
 
 const cors = require('cors');
 
@@ -23,7 +24,8 @@ app.get('/',(req,res)=>{
     );
 });
 
-app.post('/create',createClient)
+// app.post('/create',createClient)
+app.post('/create',createUseer)
     
     
 
@@ -47,5 +49,6 @@ app.post('/api/chatbot',async(req,res)=>{
 
 app.listen(3000,()=>{
     console.log('Server Connected')
-    connection();
+    // connection();
+    mongoConnect();
 })

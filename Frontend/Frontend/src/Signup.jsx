@@ -49,22 +49,16 @@ export default function Signup() {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (re.test(email)) e.email = "Enter a valid email address.";
     }
-
-    if (password) {
+    if (password==='') {
       e.password = "Password is required.";
     }
-    if (password.length < 8){
+    else if (password.length < 8){
       e.password = "Password must be at least 8 characters.";
 
     }
-   console.log(password)
-    
-     
-
-    if (confirm){ e.confirm = "Please confirm your password.";}
     if (password !== confirm){ e.confirm = "Passwords do not match.";}
 
-    if (!agree){ e.agree = "You must accept the terms to continue.";}
+    else if (!agree){ e.agree = "You must accept the terms to continue.";}
 
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -76,6 +70,10 @@ export default function Signup() {
     const fn = document.getElementById('fullName').value;
     try{
       const create = await axios.post('http://localhost:3000/create',{fullName:fn,email:em,password:pass})
+      if(create.status==='200'){
+        setLoading(!loading)
+      }
+
 
     }
     catch(err){
@@ -89,14 +87,28 @@ export default function Signup() {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     resetErrors();
+    if(validate()){
+      createUser();
+      const em = document.getElementById('email');
+      const pass = document.getElementById('password');
+      const fn = document.getElementById('fullName');
+      const cof = document.getElementById('confirm');
+      setAgree(!agree)
+      em.value='';
+      pass.value='';
+      fn.value='';
+      cof.value='';
+     
 
-    if (!validate()) {
+    }
+
+    else {
       // focus first invalid
       if (errors.fullName) nameRef.current?.focus();
       return;
     }
 
-    setLoading(true);
+    
     setServerError("");
 
     
@@ -123,7 +135,7 @@ export default function Signup() {
             autoComplete="name"
             aria-invalid={errors.fullName ? "true" : "false"}
             aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            disabled={loading}
+            
           />
         </label>
         {errors.fullName && <div id="fullName-error" className="field-error">{errors.fullName}</div>}
@@ -174,7 +186,7 @@ export default function Signup() {
             id="confirm"
             className={`login-input ${errors.confirm ? "invalid" : ""}`}
             type={showPassword ? "text" : "password"}
-           
+            onChange={(e) => setConfirm(e.target.value)}
             placeholder="Repeat your password"
             autoComplete="new-password"
           />
@@ -183,10 +195,10 @@ export default function Signup() {
 
         <label className="login-row remember-me" style={{ marginTop: 8 }}>
           <input
+            id='checkbox'
             type="checkbox"
             checked={agree}
             onChange={(e) => setAgree(e.target.checked)}
-            disabled={loading}
           />
           I agree to the terms and privacy policy
         </label>
@@ -195,13 +207,10 @@ export default function Signup() {
         <button
           type="submit"
           className="login-btn"
-          disabled={loading}
-          aria-busy={loading}
-          onClick={createUser}
         >
-          {loading ? "Creating account..." : "Create account"}
+          {loading ? "Account Created":"Create Account" }
         </button>
-
+        
         <div className="signup-note">
           Already have an account?{" "}
           <a onClick={()=>{handlenav('/Login')}}>Sign in</a>
