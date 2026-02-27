@@ -6,18 +6,15 @@ import "./Footer.css"
 import FAQ from './FAQ';
 function Footer() {
   const currentYear = new Date().getFullYear();
-  const navigate = useNavigate()
   const faq =document.getElementById('faq')
+  const geti = ()=>{
+    return(
+      <>
+        <FAQ></FAQ>
+      </>
+    )
+  }
 
-const geti= ()=>{
-  navigate('/FAQ')
-  return(
-    <><FAQ></FAQ></>
-  )
-  
- 
-  
-};
 
   return (
     <footer className="footer">
@@ -37,7 +34,7 @@ const geti= ()=>{
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a id='faq' onClick={geti}>Privacy Policy</a></li>
+            <li><a id='faq' href='FAQ' onClick={geti}>Privacy Policy</a></li>
           </ul>
         </div>
 
