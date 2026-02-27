@@ -11,6 +11,12 @@ function Footer() {
 
 const geti= ()=>{
   navigate('/FAQ')
+  return(
+    <><FAQ></FAQ></>
+  )
+  
+ 
+  
 };
 
   return (
