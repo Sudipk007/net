@@ -164,6 +164,13 @@
   text-align: center;
 }
 
+#signID:hover{
+  cursor: pointer;
+}
+#loginID:hover{
+  cursor: pointer;
+}
+
 /* Responsive tweaks */
 @media (max-width: 480px){
   .login-card{

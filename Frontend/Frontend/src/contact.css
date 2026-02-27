@@ -54,7 +54,7 @@
   .contact-form{display:flex; flex-direction:column; gap:14px; margin-top:8px;}
   .row{display:flex; gap:12px; flex-wrap:wrap;}
   .field{flex:1; display:flex; flex-direction:column; gap:8px; min-width:220px;}
-  .label-text{font-size:0.85rem; color:var(--muted); margin-left:6px;}
+  .label-text{font-size:0.85rem; color:white; margin-left:6px;}
   input, textarea{
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     border:1px solid rgba(255,255,255,0.06);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./contact.css";
+import axios from "axios";
 
 export default function ContactUs() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -35,6 +36,27 @@ export default function ContactUs() {
     setErrorMsg("");
   }
 
+  const sendMessage = async()=>{
+    try{
+      const email = document.getElementById('email').value
+      const fullname = document.getElementById('fullname').value
+      const message = document.getElementById('message').value
+      const send = await axios.post('http://localhost:3000/send',{Fullname:fullname,email:email,message:message})
+      if(send.status===200){
+        setStatus('success')
+        
+      }
+      
+
+
+
+    }
+    catch(err){
+
+    }
+
+  }
+
   return (
     <>
       <section className="contact-shell" aria-labelledby="contact-heading">
@@ -53,8 +75,9 @@ export default function ContactUs() {
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <div className="row">
               <label className="field">
-                <span className="label-text">Your name</span>
+                <span className="label-text" >Your name</span>
                 <input
+                  id="fullname"
                   name="name"
                   value={form.name}
                   onChange={handleChange}
@@ -66,8 +89,9 @@ export default function ContactUs() {
               </label>
 
               <label className="field">
-                <span className="label-text">Email</span>
+                <span className="label-text" >Email</span>
                 <input
+                  id="email"
                   name="email"
                   type="email"
                   value={form.email}
@@ -83,6 +107,7 @@ export default function ContactUs() {
             <label className="field">
               <span className="label-text">Message</span>
               <textarea
+                id="message"
                 name="message"
                 value={form.message}
                 onChange={handleChange}
@@ -100,7 +125,8 @@ export default function ContactUs() {
                 className={`btn-send ${status === "sending" ? "sending" : ""} ${
                   status === "success" ? "success" : ""
                 }`}
-                disabled={status === "sending"}
+                onClick={sendMessage}
+                
                 aria-live="polite"
               >
                 <span className="btn-content">

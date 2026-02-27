@@ -13,6 +13,8 @@ import Login from './Login';
 import Signup from './Signup';
 import Productcat from './Headphone'
 import Comp from './computer'
+import Profile from './profile';
+import FAQ from './FAQ';
 
 function App() {
   
@@ -31,6 +33,8 @@ function App() {
             <Route path="/shop/buy-computer" element={<Comp />} />
             <Route path="/shop/buy-headphone" element={<Productcat/>} />
             <Route path="/Signup" element={<Signup />} />
+            <Route path="/profile" element={<Profile></Profile>} />
+            <Route path="FAQ" element={<FAQ></FAQ>}/>
           </Routes>
         </div>
       </Router>

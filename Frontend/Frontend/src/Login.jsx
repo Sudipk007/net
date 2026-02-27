@@ -3,6 +3,7 @@ import "./Login.css";
 import { Link, redirect } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import profile from "./profile";
 /**
  * Login component
  *
@@ -54,7 +55,8 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     resetErrors();
-    if (!validate()) {
+   
+    if(!validate()) {
       // focus the first invalid field
       if (errors.email) emailRef.current?.focus();
       return;
@@ -63,17 +65,30 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
     setLoading(true);
     setServerError("");
 
-    try{
-
-
-
-    }
-    catch(err){
-
-    }
-
     
   };
+  const checkU = async()=>{
+    try{
+      const email =document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const login = await axios.post('http://localhost:3000/login',{email:email,password:password},{ withCredentials: true } )
+      if(login.status===200){
+        const profile = await axios.get("http://localhost:3000/profile",{withCredentials:true})
+        console.log(profile)
+        navigate('/profile')
+      }
+    }
+    catch(err){
+      console.log(err)
+      const email =document.getElementById('email');
+      const password = document.getElementById('password');
+      email.value=''
+      password.value=''
+      
+    }
+
+
+  }
 
   return (
     <div className="login-wrapper" aria-live="polite">
@@ -152,13 +167,13 @@ export default function Login({ onLogin, submitUrl = "/api/login" }) {
         <button
           id="log"
           type="submit"
-          aria-busy={loading}
+          onClick={checkU}
         >
-          {loading ? "Signing in..." : "Sign in"}
+          Sign In
         </button>
 
         <div className="signup-note">
-          Don't have an account?  <a onClick={()=>{handleNav('/Signup')}}>Sign up</a>
+          Don't have an account?  <a id='signID' onClick={()=>{handleNav('/Signup')}}>Sign up</a>
         </div>
       </form>
     </div>

@@ -1,6 +1,6 @@
 const sql = require('mysql2')
 const mongoose = require('mongoose');
-const dontenv = require('dotenv').config();
+const dotenv = require('dotenv').config();
 let name='';
 // let connect =sql.createConnection({
 //     host:process.env.DB_HOST,
