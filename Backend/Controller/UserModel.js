@@ -89,8 +89,4 @@ const showMessage = async (req,res)=>{
 
 }
 
-
-const FAQ = async(req,res)=>{
-    
-}
 module.exports= {createUseer,loginuser,sendMessage,checkAuth,showMessage}
