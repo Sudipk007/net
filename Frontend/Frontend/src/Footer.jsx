@@ -1,18 +1,25 @@
 import React from 'react';
 // We'll create this CSS file next
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+
 import { useNavigate } from 'react-router-dom'; // Install react-icons if you don't have it: npm install react-icons
 import "./Footer.css"
 import FAQ from './FAQ';
+import profile from './profile';
 function Footer() {
   const currentYear = new Date().getFullYear();
   const faq =document.getElementById('faq')
+  const navigate = useNavigate();
   const geti = ()=>{
-    return(
-      <>
-        <FAQ></FAQ>
-      </>
-    )
+    
+    try{
+      navigate('/FAQ')
+
+    }
+    catch(err){
+      console.log(err)
+
+    }
   }
 
 
@@ -34,7 +41,8 @@ function Footer() {
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a id='faq' href='FAQ' onClick={geti}>Privacy Policy</a></li>
+            <li><a id='faq' onClick={geti}>Privacy Policy</a></li>
+            
           </ul>
         </div>
 

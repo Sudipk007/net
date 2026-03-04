@@ -4,7 +4,7 @@ function FAQ(){
     return(
         <>
             <div >
-                <p >
+               
                     <h1 className='FAQ'>NetNova IT Solution </h1> <br></br>
 
                     <h2 className='FAQ'>Policy and FAQ </h2><br></br><br></br>
@@ -299,7 +299,7 @@ function FAQ(){
                         FAQ attachment:  <br></br><br></br>
                        <p>http://44.200.40.53/FAQ <br></br></p> 
                     </div>
-                </p>
+               
                 
             </div>
         </>

@@ -37,11 +37,13 @@ function App() {
             <Route path="/FAQ" element={<FAQ></FAQ>}/>
           </Routes>
         </div>
+        <ChatIcon/>
+        <Footer></Footer>
       </Router>
-      <ChatIcon/>
+     
       {/* {isChatOpen && <ChatWindow onClose={toggleChat} />} */}
       
-      <Footer></Footer>
+      
     </>
   );
 }
