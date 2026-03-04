@@ -185,3 +185,15 @@
         justify-content: center; /* Center social icons */
     }
 }
+
+.FAQ{
+    text-align:center ;
+}
+
+.Faq{
+    margin-left: 100px;
+}
+
+.Faq p{
+    margin-left: 50px;
+}
