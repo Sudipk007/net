@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json())
 app.use(express.static(buildpath))
 app.use(cookieParser())
-app.get('*',(req,res)=>{
+app.get('/',(req,res)=>{
     c
     res.sendFile(
         path.join(__dirname, "../Frontend/Frontend/dist/index.html"),
